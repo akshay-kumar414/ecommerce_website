@@ -1,11 +1,14 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const connectDB = require("./config/db");
 
 dotenv.config();
 
 const app = express();
+
+// ✅ DATABASE CONNECTION
+connectDB();
 
 
 // ✅ MIDDLEWARE
@@ -33,14 +36,7 @@ app.get("/", (req, res) => {
 });
 
 
-// ✅ DATABASE CONNECTION (FIXED 🔥)
-mongoose.connect(process.env.MONGO_URI)
-.then(() => {
-  console.log("✅ Database Connected");
-})
-.catch((error) => {
-  console.log("❌ DB Error:", error.message);
-});
+
 
 
 // ✅ SERVER START
