@@ -41,7 +41,7 @@ const BANNERS = [
 ];
 
 const API_BASE_URL = "http://localhost:5001";
-const UPI_ID = "7008450074@yescred";
+const UPI_ID = "9241939505@ybl";
 const PAYEE_NAME = "LocalKart";
 
 function App() {
@@ -63,7 +63,7 @@ function App() {
   const [paymentStatusMessage, setPaymentStatusMessage] = useState("");
   const [processingPayment, setProcessingPayment] = useState(false);
 
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YWJlYzJmMTk2MGU5MWQ0MjE0NTc1NyIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc3NzM1NTA0NSwiZXhwIjoxNzc3NDQxNDQ1fQ.z41Xa653hL6sKM5jmU5UCyvsKs7RM5UPk0R0F62vxbw"; // apna token
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YWJlYzJmMTk2MGU5MWQ0MjE0NTc1NyIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc3NzQ2MDIwNiwiZXhwIjoxNzc4MDY1MDA2fQ.cTRvjJJ_vpPzEtpaYv-Zi0K-IQ3aWYfyEH4jyutj_m0"; // Valid demo token
   const paymentAmount = Number(totalPrice || 0).toFixed(2);
   const upiPaymentUri = `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${paymentAmount}&cu=INR&tn=${encodeURIComponent("LocalKart order payment")}`;
 

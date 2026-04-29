@@ -8,11 +8,14 @@ const protect = async (req, res, next) => {
 
     let token;
 
+    console.log("Headers:", req.headers); // DEBUG
+
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer")
     ) {
       token = req.headers.authorization.split(" ")[1];
+      console.log("Token found:", token.substring(0, 20) + "..."); // DEBUG
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -26,12 +29,14 @@ const protect = async (req, res, next) => {
 
     } else {
 
+      console.log("No authorization header found"); // DEBUG
       return res.status(401).json({ message: "No token provided" });
 
     }
 
   } catch (error) {
 
+    console.log("Auth error:", error.message); // DEBUG
     return res.status(401).json({ message: "Not authorized" });
 
   }

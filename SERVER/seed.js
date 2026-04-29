@@ -11,11 +11,9 @@ mongoose.connect(process.env.MONGO_URI)
 
     console.log("DB Connected for seeding...");
 
-    await User.deleteMany({
-      email: {
-        $in: ["customer@localkart.dev", "admin@localkart.dev"]
-      }
-    });
+    // Delete all existing data
+    await User.deleteMany({});
+    await Product.deleteMany({});
 
     const demoPassword = await bcrypt.hash("password123", 10);
 
@@ -35,9 +33,6 @@ mongoose.connect(process.env.MONGO_URI)
         role: "admin"
       }
     ]);
-
-    // ⚠️ OLD DATA DELETE (optional)
-    await Product.deleteMany();
 
     const products = [
       {
